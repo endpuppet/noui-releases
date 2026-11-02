@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Not found – noUI</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#07070a">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<style>
+  :root { --bg: #07070a; --text: #ecebf5; --text-2: #a1a0b5; --goo: #4f46e5; --pupil: #22d3ee; color-scheme: dark; }
+  * { box-sizing: border-box; margin: 0; }
+  body { min-height: 100svh; display: grid; place-content: center; justify-items: center; gap: 16px; text-align: center; padding: 24px;
+         background: radial-gradient(60vmax 40vmax at 50% 120%, rgba(79,70,229,.22), transparent 60%), var(--bg); color: var(--text);
+         font: 16px/1.5 ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; }
+  .eye { width: 96px; height: 96px; border-radius: 50%; display: grid; place-items: center;
+         background: radial-gradient(circle at 35% 30%, #a5b4fc, var(--goo) 55%, #312e81); box-shadow: 0 0 40px rgba(79,70,229,.55); }
+  .eye span { width: 46px; height: 46px; border-radius: 50%; background: #09090b; display: grid; place-items: center; animation: blink 5s infinite; }
+  .eye i { width: 20px; height: 20px; border-radius: 50%; background: var(--pupil); box-shadow: 0 0 12px var(--pupil); animation: look 4s ease-in-out infinite; }
+  h1 { font-size: clamp(3rem, 12vw, 6rem); line-height: 1; letter-spacing: -.05em; }
+  p { color: var(--text-2); max-width: 34ch; }
+  a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 22px; margin-top: 6px; border-radius: 999px; background: linear-gradient(180deg, #6366f1, #4f46e5); color: #fff; font-weight: 500; text-decoration: none; }
+  a:focus-visible { outline: 2px solid var(--pupil); outline-offset: 3px; }
+  @keyframes blink { 0%, 46%, 50%, 100% { transform: scaleY(1); } 48% { transform: scaleY(.08); } }
+  @keyframes look { 0%, 100% { transform: translate(-6px, 0); } 50% { transform: translate(6px, 2px); } }
+  @media (prefers-reduced-motion: reduce) { .eye span, .eye i { animation: none; } }
+</style>
+</head>
+<body>
+  <div class="eye" aria-hidden="true"><span><i></i></span></div>
+  <h1>404</h1>
+  <p>The eye looked everywhere along the rail. This page isn't here.</p>
+  <!-- Absolute "/" would break under a project subpath, so go up from wherever this page is served. -->
+  <a id="home" href="./">Back to noUI</a>
+  <script>
+    // On a project site (user.github.io/repo/missing) "/" is the wrong root: use the first path segment only when it is the repo.
+    (function () {
+      var host = location.hostname, seg = location.pathname.split('/')[1];
+      if (/\.github\.io$/.test(host) && seg) document.getElementById('home').href = '/' + seg + '/';
+      else document.getElementById('home').href = '/';
+      var i = document.querySelector('link[rel=icon]'); if (i && /\.github\.io$/.test(host) && seg) i.href = '/' + seg + '/favicon.svg';
+    })();
+  </script>
+</body>
+</html>
