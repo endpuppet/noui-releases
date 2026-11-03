@@ -1,0 +1,17 @@
+{
+  "updated": "2026-11-03",
+  "summary": "Phases 0 to 3 are done: the engine, the feel and the pods. Real tools are next.",
+  "items": [
+    { "id": "plan", "title": "Plan", "status": "done", "text": "Full rewrite plan, decisions locked: web first, custom API, four drones, glass goo." },
+    { "id": "0", "title": "0 · Foundation", "status": "done", "text": "Clean project, folder layout, strict TypeScript, tests, design tokens." },
+    { "id": "1", "title": "1 · Engine", "status": "done", "text": "Rounded rail, fixed-step loop, rail-space springs, glass renderer, eye state machine." },
+    { "id": "2", "title": "2 · Feel & polish", "status": "done", "text": "Fling and snap points, feel presets, long-press menu, keyboard control, reduced motion." },
+    { "id": "3", "title": "3 · Pods", "status": "done", "text": "Drones ooze into glass panels that open toward the screen centre and morph into each other." },
+    { "id": "4", "title": "4 · Tools", "status": "next", "text": "Attach, Quick Notes, Clipboard Editor, Prompt Presets. Local storage, export and import." },
+    { "id": "5", "title": "5 · AI", "status": "planned", "text": "Custom API adapter with streaming, Ask panel, Run with AI, rewrite actions, thinking and speaking eye." },
+    { "id": "6", "title": "6 · Settings 2.0", "status": "planned", "text": "New settings panel with live preview, saved between sessions, AI profiles." },
+    { "id": "7", "title": "7 · Ship web", "status": "planned", "text": "Installable, offline-ready web app." },
+    { "id": "8", "title": "8 · Native", "status": "planned", "text": "Windows overlay, then Android floating bubble." },
+    { "id": "later", "title": "Beyond", "status": "later", "text": "More AI providers, an offline in-browser model, AI that can act on drones, custom drones, a browser extension." }
+  ]
+}

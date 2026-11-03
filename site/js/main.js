@@ -1,7 +1,11 @@
-// Entry point: the live eye in the hero (plus scroll reveals and nav), then the Get noUI card.
-import { config } from "../config.js?v=a25ac2e4";
-import { startDemo } from "./demo.js?v=a25ac2e4";
-import { initDownload } from "./download.js?v=a25ac2e4";
+// Entry point: page chrome, the live stages, the roadmap, then the Get noUI card.
+import { config } from "../config.js?v=63fb71e3";
+import { initDownload } from "./download.js?v=63fb71e3";
+import { initPage } from "./page.js?v=63fb71e3";
+import { initRoadmap } from "./roadmap.js?v=63fb71e3";
+import { initStages } from "./stages.js?v=63fb71e3";
 
-startDemo();
+initPage();
+initStages();
+initRoadmap();
 initDownload(config);

@@ -4,32 +4,46 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>noUI — the interface that lives on the edge</title>
-  <meta name="description" content="noUI is a living liquid eye that rides a rail around your screen. Tap it and four drones flow out — attach, notes, clipboard, prompts — with your own AI behind the eye." />
-  <meta name="theme-color" content="#07070a" />
+  <meta name="description" content="noUI is a living liquid eye that rides a rail around the edge of your screen. Tap it and four drones flow out; tap a drone and a glass panel oozes out of it. Bring your own AI." />
+  <meta name="theme-color" content="#09090b" />
   <meta property="og:title" content="noUI — the interface that lives on the edge" />
-  <meta property="og:description" content="A living liquid eye on a rail, four tool drones, and your own AI behind it." />
+  <meta property="og:description" content="A living liquid eye on a rail, four tool drones that ooze into glass panels, and your own AI behind it." />
   <meta property="og:type" content="website" />
+  <!-- Link previews need an absolute URL. If the site moves to a custom domain, change this one line. -->
+  <meta property="og:image" content="https://endpuppet.github.io/noui-releases/og.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="The noUI eye on its rail, with four drones and a glass panel oozing out of one of them." />
+  <meta name="twitter:card" content="summary_large_image" />
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="preload" href="fonts/Geist-Variable.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="stylesheet" href="css/site.css?v=a25ac2e4" />
+  <link rel="stylesheet" href="css/site.css?v=63fb71e3" />
+  <noscript><style>.reveal { opacity: 1; transform: none; }</style></noscript>
 </head>
 <body>
-  <!-- SVG icon sprite -->
+  <!-- Icon sprite. The four drone icons are lucide's, the same ones the app draws. -->
   <svg width="0" height="0" style="position:absolute" aria-hidden="true">
     <defs>
-      <symbol id="i-attach" viewBox="0 0 24 24"><path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l8.57-8.57A4 4 0 1 1 18 8.84l-8.59 8.57a2 2 0 0 1-2.83-2.83l8.49-8.48"/></symbol>
+      <symbol id="i-attach" viewBox="0 0 24 24"><path d="m16 6-8.414 8.586a2 2 0 0 0 2.829 2.829l8.414-8.586a4 4 0 1 0-5.657-5.657l-8.379 8.551a6 6 0 1 0 8.485 8.485l8.379-8.551"/></symbol>
       <symbol id="i-note" viewBox="0 0 24 24"><path d="M16 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8Z"/><path d="M15 3v4a2 2 0 0 0 2 2h4"/></symbol>
-      <symbol id="i-clip" viewBox="0 0 24 24"><rect width="8" height="4" x="8" y="2" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M8 11h8M8 15h5"/></symbol>
-      <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3.5l1.8 5.2 5.2 1.8-5.2 1.8L12 17.5l-1.8-5.2L5 10.5l5.2-1.8Z"/><path d="M19 15v4M17 17h4M5 3v3M3.5 4.5h3"/></symbol>
-      <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></symbol>
-      <symbol id="i-win" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 18v3"/></symbol>
-      <symbol id="i-phone" viewBox="0 0 24 24"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M11 18.5h2"/></symbol>
-      <symbol id="i-gh" viewBox="0 0 24 24"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></symbol>
-      <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
-      <symbol id="i-down" viewBox="0 0 24 24"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></symbol>
-      <symbol id="i-lock" viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></symbol>
+      <symbol id="i-clip" viewBox="0 0 24 24"><rect width="8" height="4" x="8" y="2" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-5.5"/><path d="M4 13.5V6a2 2 0 0 1 2-2h2"/><path d="M13.378 15.626a1 1 0 1 0-3.004-3.004l-5.01 5.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z"/></symbol>
+      <symbol id="i-spark" viewBox="0 0 24 24"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"/><path d="M20 2v4"/><path d="M22 4h-4"/><circle cx="4" cy="20" r="2"/></symbol>
+      <symbol id="i-lock" viewBox="0 0 24 24"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
+      <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></symbol>
+      <symbol id="i-win" viewBox="0 0 24 24"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></symbol>
+      <symbol id="i-phone" viewBox="0 0 24 24"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></symbol>
+      <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
+      <symbol id="i-down" viewBox="0 0 24 24"><path d="M12 15V3"/><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/></symbol>
+      <symbol id="i-gh" viewBox="0 0 24 24"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></symbol>
+      <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/></symbol>
+      <symbol id="i-keyboard" viewBox="0 0 24 24"><path d="M10 8h.01"/><path d="M12 12h.01"/><path d="M14 8h.01"/><path d="M16 12h.01"/><path d="M18 8h.01"/><path d="M6 8h.01"/><path d="M7 16h10"/><path d="M8 12h.01"/><rect width="20" height="16" x="2" y="4" rx="2"/></symbol>
+      <symbol id="i-hand" viewBox="0 0 24 24"><path d="M18 11V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2"/><path d="M14 10V4a2 2 0 0 0-2-2a2 2 0 0 0-2 2v2"/><path d="M10 10.5V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/></symbol>
+      <symbol id="i-accessibility" viewBox="0 0 24 24"><circle cx="16" cy="4" r="1"/><path d="m18 19 1-7-6 1"/><path d="m5 8 3-3 5.5 3-2.36 3.5"/><path d="M4.24 14.5a5 5 0 0 0 6.88 6"/><path d="M13.76 17.5a5 5 0 0 0-6.88-6"/></symbol>
+      <symbol id="i-timer" viewBox="0 0 24 24"><line x1="10" x2="14" y1="2" y2="2"/><line x1="12" x2="15" y1="14" y2="11"/><circle cx="12" cy="14" r="8"/></symbol>
     </defs>
   </svg>
+
+  <a class="skip" href="#drones">Skip the demo</a>
 
   <header class="nav" id="nav">
     <a class="brand" href="#top" aria-label="noUI home">
@@ -39,6 +53,8 @@
     <nav class="nav-links" aria-label="Sections">
       <a href="#drones">Drones</a>
       <a href="#eye">The eye</a>
+      <a href="#feel">Feel</a>
+      <a href="#keys">Keyboard</a>
       <a href="#ai">AI</a>
       <a href="#roadmap">Roadmap</a>
       <a href="#get">Get noUI</a>
@@ -49,37 +65,26 @@
   </header>
 
   <main id="top">
-    <!-- HERO: live, interactive prototype of the eye on its rail -->
-    <section class="stage" id="stage" aria-label="Interactive noUI demo">
-      <div class="rail" id="rail" aria-hidden="true"><div class="rail-glow"></div></div>
-      <canvas id="goo" aria-hidden="true"></canvas>
-
+    <!-- HERO: the real engine, running in a framed stage -->
+    <section class="hero">
       <div class="hero-copy">
-        <p class="eyebrow"><span class="dot"></span> Rewrite in progress · web first</p>
+        <p class="eyebrow"><span class="dot"></span> Web first · phases 0–3 done</p>
         <h1>The interface that<br /><em>lives on the edge.</em></h1>
-        <p class="lede">noUI is a living liquid eye that rides a rail around your screen. Tap it and four drones flow out — attach, notes, clipboard, prompts — with your own AI behind the eye.</p>
+        <p class="lede">A living liquid eye rides a rail around the edge of your screen. Tap it and four drones flow out; tap a drone and a glass panel oozes out of it. Your own AI will sit behind the eye.</p>
         <div class="cta-row">
           <a class="btn btn-primary" href="#drones">See what it does <svg class="ic"><use href="#i-arrow"/></svg></a>
           <a class="btn btn-ghost" href="#roadmap">Roadmap</a>
         </div>
       </div>
 
-      <button class="drone" data-i="1" data-pod="attach" aria-label="Attach" tabindex="-1"><svg class="ic"><use href="#i-attach"/></svg><span class="tip">Attach</span></button>
-      <button class="drone" data-i="2" data-pod="notes" aria-label="Quick Notes" tabindex="-1"><svg class="ic"><use href="#i-note"/></svg><span class="tip">Quick Notes</span></button>
-      <button class="drone" data-i="3" data-pod="clipboard" aria-label="Clipboard Editor" tabindex="-1"><svg class="ic"><use href="#i-clip"/></svg><span class="tip">Clipboard</span></button>
-      <button class="drone" data-i="4" data-pod="presets" aria-label="Prompt Presets" tabindex="-1"><svg class="ic"><use href="#i-spark"/></svg><span class="tip">Presets</span></button>
-
-      <button class="eye" id="eyeBtn" aria-label="noUI eye. Enter to release drones, arrow keys to move along the rail, L to lock." aria-expanded="false">
-        <span class="sclera" id="sclera"><span class="pupil" id="pupil"><span class="glint"></span><span class="glint2"></span></span></span>
-        <span class="lock-badge" aria-hidden="true"><svg class="ic"><use href="#i-lock"/></svg></span>
-      </button>
-
-      <div class="pod" id="pod" role="dialog" aria-modal="false" aria-labelledby="podTitle" hidden>
-        <div class="pod-head"><span class="pod-ic" id="podIc"></span><h3 id="podTitle"></h3><button class="pod-x" id="podX" aria-label="Close">×</button></div>
-        <div class="pod-body" id="podBody"></div>
+      <div class="hero-stage" data-scope="hero">
+        <figure class="frame frame-hero" data-frame>
+          <img class="frame-poster" src="img/stage-hero.jpg" alt="The noUI eye in the corner of a dark stage, with four drones trailing it and a glass panel open." width="1440" height="820" />
+          <iframe class="frame-view" src="demo.html?scene=hero&v=63fb71e3" data-scene="hero" title="Live noUI demo: the eye on its rail. Tap the eye to release the drones." width="1120" height="640"></iframe>
+          <div class="frame-badges" aria-hidden="true"><span class="frame-badge"><span class="live-dot"></span><span data-badge>Live</span></span><span class="frame-mode"><span data-mode-label>Idle</span></span></div>
+        </figure>
+        <p class="frame-caption">Not a video: this is the real engine, running in your browser. Tap the eye, drag it around the rail, fling it into a corner, or press and hold for the quick menu.</p>
       </div>
-
-      <p class="hint" id="hint"><span>Drag the eye</span><i></i><span>Tap to release drones</span><i></i><span>Double-tap to lock</span></p>
     </section>
 
     <!-- PRINCIPLES -->
@@ -87,101 +92,238 @@
       <div class="p-card">
         <span class="p-num">01</span>
         <h3>On the rail</h3>
-        <p>It never covers your work. The eye glides along a rounded track hugging the screen edge — drag it, fling it, and it settles into a corner or edge center.</p>
+        <p>It never covers your work. The eye glides along a rounded track just inside the screen edge. Drag it, fling it, and it settles into a corner.</p>
       </div>
       <div class="p-card">
         <span class="p-num">02</span>
         <h3>Alive</h3>
-        <p>It looks at your cursor, blinks, gets curious, dozes off when you leave and wakes when you come back. Its moods tell you what it's doing.</p>
+        <p>It looks at your cursor, blinks, dozes off after thirty seconds and wakes when you come back. Its lids and colour tell you what it's doing.</p>
       </div>
       <div class="p-card">
         <span class="p-num">03</span>
         <h3>Fluid</h3>
-        <p>Everything is one body of glass goo. Drones bud off the eye, panels ooze out of drones, and it all merges back together when you're done.</p>
+        <p>The eye, the drones and the panels are one body of glass goo. Drones flow out of the eye, panels ooze out of drones, and it all melts back when you're done.</p>
       </div>
     </section>
 
-    <!-- DRONES -->
-    <section class="section" id="drones">
-      <div class="sec-head reveal">
-        <p class="kicker">Four drones · v1</p>
-        <h2>Small tools that follow the eye.</h2>
-        <p class="sub">Tap the eye and the drones flow out along the rail. Tap a drone and it swells into a glass panel that opens toward the middle of your screen.</p>
-      </div>
-      <div class="drone-grid">
-        <article class="d-card reveal">
-          <div class="d-ic"><svg class="ic"><use href="#i-attach"/></svg></div>
-          <h3>Attach</h3>
-          <p>Drop files, images or text straight onto the drone. Keep them at hand and hand them to the AI as context.</p>
-          <ul><li>Drag onto the drone — it swells to catch it</li><li>Paste images, drag items back out</li><li>Badge shows what's attached</li></ul>
-        </article>
-        <article class="d-card reveal">
-          <div class="d-ic"><svg class="ic"><use href="#i-note"/></svg></div>
-          <h3>Quick Notes</h3>
-          <p>Opens on a fresh note with the cursor already blinking. Write, close, done. It saves as you type.</p>
-          <ul><li>Autosave, pin, search</li><li>Light markdown</li><li>Long-press: new note from clipboard</li></ul>
-        </article>
-        <article class="d-card reveal">
-          <div class="d-ic"><svg class="ic"><use href="#i-clip"/></svg></div>
-          <h3>Clipboard Editor</h3>
-          <p>A scratchpad for whatever you're about to paste. Clean it up in one tap before it lands anywhere.</p>
-          <ul><li>Trim, case, sort, dedupe, find &amp; replace</li><li>JSON format / minify, strip formatting</li><li>Recent copies, one-tap copy back</li></ul>
-        </article>
-        <article class="d-card reveal">
-          <div class="d-ic"><svg class="ic"><use href="#i-spark"/></svg></div>
-          <h3>Prompt Presets</h3>
-          <p>Your library of prompts with fill-in variables. Copy the result, or run it straight through your AI.</p>
-          <ul><li><code>{{clipboard}}</code> <code>{{note}}</code> <code>{{input}}</code> variables</li><li>Tags, favorites, search</li><li>Import / export as JSON</li></ul>
-        </article>
+    <!-- DRONES + PODS -->
+    <section class="section" id="drones" data-scope="pods">
+      <div class="split split-stage-right">
+        <div class="split-text">
+        <div class="sec-head reveal">
+          <p class="kicker">Four drones</p>
+          <h2>Small tools that follow the eye.</h2>
+          <p class="sub">Tap the eye and four drones flow out along the rail like a train, joined by liquid necks. Tap a drone and a pod grows out of it. Tap another and the same pod morphs across. Close it and it melts back.</p>
+        </div>
+        <div class="drone-list" role="group" aria-label="Open a drone in the demo">
+          <button class="drone-card" type="button" data-cmd="pod" data-arg="0" aria-pressed="false">
+            <span class="d-ic"><svg class="ic"><use href="#i-attach"/></svg></span>
+            <span class="d-txt">
+              <b>Attach</b>
+              <span>Drop files, images or text onto the drone and keep them at hand.</span>
+              <small>Paste images · drag items back out · hand it all to the AI</small>
+            </span>
+          </button>
+          <button class="drone-card" type="button" data-cmd="pod" data-arg="1" aria-pressed="false">
+            <span class="d-ic"><svg class="ic"><use href="#i-note"/></svg></span>
+            <span class="d-txt">
+              <b>Quick Notes</b>
+              <span>Opens on a fresh note with the cursor already blinking.</span>
+              <small>Autosave · pin · search · light markdown</small>
+            </span>
+          </button>
+          <button class="drone-card" type="button" data-cmd="pod" data-arg="2" aria-pressed="false">
+            <span class="d-ic"><svg class="ic"><use href="#i-clip"/></svg></span>
+            <span class="d-txt">
+              <b>Clipboard Editor</b>
+              <span>A scratchpad for whatever you're about to paste.</span>
+              <small>Trim, case, sort, dedupe · format JSON · find and replace</small>
+            </span>
+          </button>
+          <button class="drone-card" type="button" data-cmd="pod" data-arg="3" aria-pressed="false">
+            <span class="d-ic"><svg class="ic"><use href="#i-spark"/></svg></span>
+            <span class="d-txt">
+              <b>Prompt Presets</b>
+              <span>Your prompt library, with blanks to fill in.</span>
+              <small><code>{{clipboard}}</code> <code>{{note}}</code> <code>{{input}}</code> · tags · import and export</small>
+            </span>
+          </button>
+        </div>
+        </div>
+
+        <div class="stage-col reveal">
+          <figure class="frame frame-tall" data-frame>
+            <iframe class="frame-view" src="demo.html?scene=pods&v=63fb71e3" data-scene="pods" loading="lazy" title="Live noUI demo: tap a drone and its panel oozes out." width="640" height="600"></iframe>
+            <div class="frame-badges" aria-hidden="true"><span class="frame-badge"><span class="live-dot"></span><span data-badge>Live</span></span><span class="frame-mode"><span data-mode-label>Idle</span></span></div>
+          </figure>
+          <div class="controls">
+            <div class="ctl-group" role="group" aria-label="Panel size">
+              <span class="ctl-label">Panel</span>
+              <button class="chip" type="button" data-cmd="podMode" data-arg="compact" data-needs-pod aria-pressed="false">Compact</button>
+              <button class="chip" type="button" data-cmd="podMode" data-arg="focus" data-needs-pod aria-pressed="false">Focus</button>
+            </div>
+            <div class="ctl-group" role="group" aria-label="Drones">
+              <button class="chip" type="button" data-cmd="release" data-arg="false">Recall drones</button>
+            </div>
+          </div>
+          <p class="note">The panels are previews of what the tools will look like. The real tools arrive in phase 4.</p>
+        </div>
       </div>
     </section>
 
-    <!-- EYE STATES -->
-    <section class="section" id="eye">
-      <div class="sec-head reveal">
-        <p class="kicker">The eye</p>
-        <h2>One glance tells you what it's doing.</h2>
-        <p class="sub">The eye runs on a small state machine. Each state sets where the pupil looks, how open the lid is, how often it blinks and what color it glows.</p>
+    <!-- THE EYE -->
+    <section class="section" id="eye" data-scope="eye">
+      <div class="split split-stage-left">
+        <div class="stage-col reveal">
+          <figure class="frame frame-mid" data-frame>
+            <iframe class="frame-view" src="demo.html?scene=eye&v=63fb71e3" data-scene="eye" loading="lazy" title="Live noUI demo: pick a mood for the eye." width="640" height="480"></iframe>
+            <div class="frame-badges" aria-hidden="true"><span class="frame-badge"><span class="live-dot"></span><span data-badge>Live</span></span><span class="frame-mode"><span data-mode-label>Idle</span></span></div>
+          </figure>
+        </div>
+        <div class="split-text mood-panel">
+          <div class="sec-head reveal">
+            <p class="kicker">The eye</p>
+            <h2>One glance tells you what it's doing.</h2>
+            <p class="sub">Where the pupil looks, how open the lid is, how often it blinks and what colour it glows all follow the eye's mood. Pick one, or just poke the real thing: the highlighted chip is whatever it's doing right now.</p>
+          </div>
+          <div class="chips-row reveal" role="group" aria-label="Eye mood">
+            <button class="chip" type="button" data-cmd="mood" data-arg="idle" aria-pressed="false">Idle</button>
+            <button class="chip" type="button" data-cmd="mood" data-arg="curious" aria-pressed="false">Curious</button>
+            <button class="chip" type="button" data-cmd="mood" data-arg="expanded" aria-pressed="false">Drones out</button>
+            <button class="chip" type="button" data-cmd="mood" data-arg="dragging" aria-pressed="false">Held</button>
+            <button class="chip" type="button" data-cmd="mood" data-arg="locked" aria-pressed="false">Locked</button>
+            <button class="chip" type="button" data-cmd="mood" data-arg="sleeping" aria-pressed="false">Asleep</button>
+            <button class="chip" type="button" data-cmd="mood" data-arg="hidden" aria-pressed="false">Hidden</button>
+          </div>
+          <div class="mood-card reveal" aria-live="polite">
+            <p class="mood-name" data-mood-name>Idle</p>
+            <p class="mood-text" data-mood-text>Calm glances around the room, slow blinks, sometimes a double blink. A cyan pupil.</p>
+          </div>
+          <p class="note">Still to come with the AI: <span class="chip chip-off" aria-disabled="true">Thinking</span> <span class="chip chip-off" aria-disabled="true">Speaking</span></p>
+        </div>
       </div>
-      <div class="states reveal">
-        <figure class="state"><div class="m-eye s-idle"><span><i></i></span></div><figcaption><b>Idle</b>Calm glances, slow blinks</figcaption></figure>
-        <figure class="state"><div class="m-eye s-curious"><span><i></i></span></div><figcaption><b>Curious</b>Follows your cursor</figcaption></figure>
-        <figure class="state"><div class="m-eye s-drag"><span><i></i></span></div><figcaption><b>Held</b>Wide open while you drag</figcaption></figure>
-        <figure class="state"><div class="m-eye s-locked"><span><i></i></span></div><figcaption><b>Locked</b>Half-lidded, stays put</figcaption></figure>
-        <figure class="state"><div class="m-eye s-sleep"><span><i></i></span></div><figcaption><b>Asleep</b>Dozes after you leave</figcaption></figure>
-        <figure class="state"><div class="m-eye s-think"><span><i></i></span></div><figcaption><b>Thinking</b>AI is working</figcaption></figure>
-        <figure class="state"><div class="m-eye s-speak"><span><i></i></span></div><figcaption><b>Speaking</b>Streaming an answer</figcaption></figure>
-        <figure class="state"><div class="m-eye s-error"><span><i></i></span></div><figcaption><b>Error</b>Soft red flash</figcaption></figure>
+    </section>
+
+    <!-- FEEL -->
+    <section class="section" id="feel" data-scope="feel">
+      <div class="split split-stage-right feel-split">
+        <div class="split-text feel-controls">
+          <div class="sec-head reveal">
+            <p class="kicker">Feel</p>
+            <h2>Physical, not animated.</h2>
+            <p class="sub">Motion runs on fixed 120 Hz springs, so it feels the same on a 60 Hz laptop and a 144 Hz monitor. The eye lives on the rail and can't fall off, and corners glide instead of kinking. Try the presets, then grab the eye and fling it.</p>
+          </div>
+          <div class="ctl-block" role="group" aria-label="Feel preset">
+            <p class="ctl-label">Feel</p>
+            <div class="chips-row">
+              <button class="chip" type="button" data-cmd="feel" data-arg="Snappy" aria-pressed="false">Snappy</button>
+              <button class="chip" type="button" data-cmd="feel" data-arg="Smooth" aria-pressed="false">Smooth</button>
+              <button class="chip" type="button" data-cmd="feel" data-arg="Bouncy" aria-pressed="false">Bouncy</button>
+              <button class="chip" type="button" data-cmd="feel" data-arg="Heavy" aria-pressed="false">Heavy</button>
+            </div>
+          </div>
+          <div class="ctl-block" role="group" aria-label="Background theme">
+            <p class="ctl-label">Look</p>
+            <div class="chips-row">
+              <button class="chip" type="button" data-cmd="theme" data-arg="Deep Space" aria-pressed="false">Deep Space</button>
+              <button class="chip" type="button" data-cmd="theme" data-arg="Midnight" aria-pressed="false">Midnight</button>
+              <button class="chip" type="button" data-cmd="theme" data-arg="Slate" aria-pressed="false">Slate</button>
+              <button class="chip" type="button" data-cmd="theme" data-arg="Bright Ink" aria-pressed="false">Bright Ink</button>
+            </div>
+          </div>
+          <div class="ctl-block" role="group" aria-label="Colours">
+            <p class="ctl-label">Colours</p>
+            <div class="chips-row">
+              <button class="chip chip-swatch" type="button" data-cmd="palette" data-arg="Indigo" aria-pressed="false"><i style="--sw:#4f46e5"></i>Indigo</button>
+              <button class="chip chip-swatch" type="button" data-cmd="palette" data-arg="Ember" aria-pressed="false"><i style="--sw:#ea580c"></i>Ember</button>
+              <button class="chip chip-swatch" type="button" data-cmd="palette" data-arg="Orchid" aria-pressed="false"><i style="--sw:#a21caf"></i>Orchid</button>
+            </div>
+          </div>
+          <div class="ctl-block" role="group" aria-label="Try">
+            <p class="ctl-label">Try</p>
+            <div class="chips-row">
+              <button class="chip" type="button" data-cmd="menu">Open the quick menu</button>
+              <button class="chip" type="button" data-cmd="reduceMotion" data-arg="true" data-toggle aria-pressed="false">Reduce motion</button>
+            </div>
+          </div>
+          <p class="note">Themes, colours and feel are all settings in the app. There is also a Transparent theme for the native overlay, which needs a desktop to show off.</p>
+        </div>
+
+        <div class="stage-col reveal">
+          <figure class="frame frame-tall" data-frame>
+            <iframe class="frame-view" src="demo.html?scene=feel&v=63fb71e3" data-scene="feel" loading="lazy" title="Live noUI demo: change the feel, the look and the colours." width="640" height="600"></iframe>
+            <div class="frame-badges" aria-hidden="true"><span class="frame-badge"><span class="live-dot"></span><span data-badge>Live</span></span><span class="frame-mode"><span data-mode-label>Idle</span></span></div>
+          </figure>
+        </div>
       </div>
+
       <div class="gestures reveal">
-        <div><kbd>Tap</kbd> release / recall drones</div>
-        <div><kbd>Drag</kbd> move along the rail</div>
-        <div><kbd>Fling</kbd> glide and snap</div>
+        <div><kbd>Tap</kbd> release or recall the drones</div>
+        <div><kbd>Drag</kbd> ride the rail</div>
+        <div><kbd>Fling</kbd> glide on, then snap to a corner</div>
         <div><kbd>Double-tap</kbd> lock in place</div>
-        <div><kbd>Long-press</kbd> Ask AI · Settings · Hide</div>
-        <div><kbd>Esc</kbd> close anything</div>
+        <div><kbd>Hold</kbd> or <kbd>right-click</kbd> for the quick menu</div>
+        <div><kbd>Esc</kbd> close the panel, then the drones</div>
+      </div>
+
+      <div class="facts reveal">
+        <div class="fact"><b>120 Hz</b><span>Fixed-step physics, the same on any screen.</span></div>
+        <div class="fact"><b>On the rail</b><span>One-dimensional springs along the track, so nothing can leave it.</span></div>
+        <div class="fact"><b>Scissored</b><span>The glass shader only runs where the goo is, not across the whole screen.</span></div>
+        <div class="fact"><b>No re-renders</b><span>Positions go straight to the DOM while it animates.</span></div>
+      </div>
+      <p class="note reveal">The quick menu: Ask AI (greyed out until phase 5), release or recall the drones, lock, hide for an hour, and Settings in the app.</p>
+    </section>
+
+    <!-- KEYBOARD + ACCESSIBILITY -->
+    <section class="section keys" id="keys">
+      <div class="sec-head reveal">
+        <p class="kicker">Keyboard &amp; access</p>
+        <h2>Everything works without a mouse.</h2>
+        <p class="sub">Press Tab in any demo above to land on the eye, then try these.</p>
+      </div>
+      <div class="keys-grid">
+        <dl class="keytable reveal">
+          <div><dt><kbd>Enter</kbd> <kbd>Space</kbd></dt><dd>Release or recall the drones</dd></div>
+          <div><dt><kbd>←</kbd> <kbd>↑</kbd> <kbd>→</kbd> <kbd>↓</kbd></dt><dd>Move along the rail, the way you press</dd></div>
+          <div><dt><kbd>Shift</kbd> + arrow</dt><dd>Jump to the next corner</dd></div>
+          <div><dt><kbd>1</kbd> – <kbd>4</kbd></dt><dd>Open that drone's panel</dd></div>
+          <div><dt><kbd>L</kbd></dt><dd>Lock or unlock</dd></div>
+          <div><dt><kbd>M</kbd> <kbd>Shift</kbd> + <kbd>F10</kbd></dt><dd>Quick menu</dd></div>
+          <div><dt><kbd>Ctrl</kbd> + <kbd>Enter</kbd></dt><dd>Make the open panel larger or smaller</dd></div>
+          <div><dt><kbd>Esc</kbd></dt><dd>Close the panel, then recall the drones</dd></div>
+        </dl>
+        <ul class="checks reveal">
+          <li>The eye and the drones are real buttons with labels. The eye's label says what state it is in.</li>
+          <li>Drones only take Tab focus while they're out.</li>
+          <li>Panels are dialogs: focus moves in, Tab stays inside, and Esc hands focus back to the drone.</li>
+          <li>The quick menu is a real menu: arrows to move, Enter to choose, Esc to close.</li>
+          <li>Reduced motion switches off bounce, breathing and splashes, whether your system asks for it or you turn it on in settings.</li>
+          <li>Panels are opaque enough to read on any background, even where blur isn't available.</li>
+        </ul>
       </div>
     </section>
 
     <!-- AI -->
     <section class="section ai" id="ai">
       <div class="ai-copy reveal">
-        <p class="kicker">AI helper</p>
+        <p class="kicker">AI · phase 5, upcoming</p>
         <h2>The eye is the AI.<br />Bring your own brain.</h2>
-        <p class="sub">Point noUI at any OpenAI-compatible endpoint: a model running on your own machine, or a hosted API you already use. Long-press the eye to ask, run a preset through it, or rewrite clipboard text in place.</p>
+        <p class="sub">The model is yours. Point noUI at any OpenAI-compatible endpoint: one running on your own machine, or a hosted API you already use. Your key and your data stay on your device. "Ask AI" is already in the quick menu, greyed out until this lands.</p>
         <ul class="checks">
-          <li>Streaming answers, abort any time</li>
+          <li>A custom endpoint first: anything that speaks <code>/v1/chat/completions</code></li>
+          <li>Streaming answers you can abort at any time</li>
           <li>Context chips: notes, clipboard text, attachments</li>
-          <li>Keys and data stay on your device</li>
-          <li>Built-in "Test connection" that tells you how to fix CORS</li>
+          <li>A thinking eye and a speaking eye</li>
         </ul>
+        <p class="chips-cap">Aimed at</p>
         <div class="chips">
-          <span>Ollama</span><span>LM Studio</span><span>llama.cpp</span><span>vLLM</span><span>OpenRouter</span><span>Groq</span><span>any /v1/chat/completions</span>
+          <span>Ollama</span><span>LM Studio</span><span>llama.cpp</span><span>vLLM</span><span>OpenRouter</span><span>Groq</span><span>any OpenAI-compatible API</span>
         </div>
       </div>
-      <div class="code reveal" aria-label="Example AI profile">
-        <div class="code-bar"><i></i><i></i><i></i><span>Settings › AI › Profile</span></div>
-<pre><span class="c-k">profile</span>   <span class="c-s">"Local Llama"</span>
+      <div class="code reveal" role="img" aria-label="A preview of a planned AI profile: a local Llama model at localhost:11434, and a Tidy this prompt preset.">
+        <div class="code-bar"><i></i><i></i><i></i><span>Settings › AI › Profile · preview</span></div>
+<pre aria-hidden="true"><span class="c-k">profile</span>   <span class="c-s">"Local Llama"</span>
 <span class="c-k">provider</span>  <span class="c-s">custom</span>  <span class="c-c">// OpenAI-compatible</span>
 <span class="c-k">baseUrl</span>   <span class="c-s">http://localhost:11434/v1</span>
 <span class="c-k">model</span>     <span class="c-s">llama3.2</span>
@@ -194,22 +336,6 @@
       </div>
     </section>
 
-    <!-- ENGINE -->
-    <section class="section">
-      <div class="sec-head reveal">
-        <p class="kicker">Under the hood</p>
-        <h2>Rebuilt to feel smooth.</h2>
-        <p class="sub">The prototype's motion depended on your screen's refresh rate and jittered at corners. The rewrite is built around a new engine. These are its design targets.</p>
-      </div>
-      <div class="engine reveal">
-        <div class="e-tile"><b>120 Hz</b><span>Fixed-step physics. Feels the same on 60, 120 and 144 Hz screens.</span></div>
-        <div class="e-tile"><b>1D springs</b><span>Eye and drones live in rail space, so they can't fall off. Corners glide instead of kinking.</span></div>
-        <div class="e-tile"><b>~2%</b><span>The goo shader only runs where the goo is, not on every pixel of the screen.</span></div>
-        <div class="e-tile"><b>0 alloc</b><span>No garbage per frame and no React re-renders in the animation loop.</span></div>
-      </div>
-      <p class="note reveal">The eye at the top of this page already runs a small version of this engine: rounded rail, fixed-step springs, fling-to-snap.</p>
-    </section>
-
     <!-- PLATFORMS -->
     <section class="section">
       <div class="sec-head reveal">
@@ -217,32 +343,36 @@
         <h2>Web first. Native next.</h2>
       </div>
       <div class="platforms reveal">
-        <div class="pf"><svg class="ic"><use href="#i-globe"/></svg><h3>Web app</h3><span class="tag tag-next">First</span><p>Installable PWA that works offline. Same code everywhere.</p></div>
-        <div class="pf"><svg class="ic"><use href="#i-win"/></svg><h3>Windows</h3><span class="tag">Later</span><p>Transparent always-on-top overlay. Global hotkey, full clipboard history, screenshots into Attach.</p></div>
-        <div class="pf"><svg class="ic"><use href="#i-phone"/></svg><h3>Android</h3><span class="tag">Later</span><p>Floating bubble over other apps, riding the edge of your phone. Share-sheet into Attach.</p></div>
+        <div class="pf"><svg class="ic"><use href="#i-globe"/></svg><h3>Web app</h3><span class="tag tag-next">First</span><p>Runs in any modern browser, the same code you just played with. An installable, offline-ready app is phase 7.</p></div>
+        <div class="pf"><svg class="ic"><use href="#i-win"/></svg><h3>Windows</h3><span class="tag">Later</span><p>A transparent, always-on-top overlay. Global hotkey, clipboard history, screenshots straight into Attach.</p></div>
+        <div class="pf"><svg class="ic"><use href="#i-phone"/></svg><h3>Android</h3><span class="tag">Later</span><p>A floating bubble over other apps, riding the edge of your phone. Share-sheet into Attach.</p></div>
       </div>
     </section>
 
-    <!-- ROADMAP -->
+    <!-- ROADMAP (data/roadmap.json, with an inline fallback below) -->
     <section class="section" id="roadmap">
       <div class="sec-head reveal">
         <p class="kicker">Roadmap</p>
-        <h2>From prototype to daily tool.</h2>
-        <p class="sub">Feel comes first: phases 1–2 must make it clearly smoother than the prototype before any new feature lands.</p>
+        <h2>From rewrite to daily tool.</h2>
+        <p class="sub" id="roadmap-summary"></p>
       </div>
-      <ol class="timeline">
-        <li class="reveal is-done"><span class="t-dot"></span><div><span class="tag tag-done">Done</span><h3>Plan</h3><p>Full rewrite plan, decisions locked: web first, custom API, four drones, glass goo.</p></div></li>
-        <li class="reveal is-done"><span class="t-dot"></span><div><span class="tag tag-done">Done</span><h3>0 · Foundation</h3><p>Clean project, folder layout, strict TypeScript, tests, design tokens.</p></div></li>
-        <li class="reveal is-done"><span class="t-dot"></span><div><span class="tag tag-done">Done</span><h3>1 · Engine parity</h3><p>Rounded rail, fixed-step loop, rail-space springs, new renderer, eye state machine. Same behavior, smooth everywhere.</p></div></li>
-        <li class="reveal is-done"><span class="t-dot"></span><div><span class="tag tag-done">Done</span><h3>2 · Feel &amp; polish</h3><p>Fling and snap points, feel presets, long-press menu, keyboard control, reduced motion.</p></div></li>
-        <li class="reveal is-done"><span class="t-dot"></span><div><span class="tag tag-done">Done</span><h3>3 · Pods</h3><p>Drones ooze into glass panels that open toward the screen center and morph into each other.</p></div></li>
-        <li class="reveal is-next"><span class="t-dot"></span><div><span class="tag tag-next">Next</span><h3>4 · Tools</h3><p>Attach, Quick Notes, Clipboard Editor, Prompt Presets. Local storage, export and import.</p></div></li>
-        <li class="reveal"><span class="t-dot"></span><div><span class="tag">Planned</span><h3>5 · AI</h3><p>Custom API adapter with streaming, Ask panel, Run with AI, rewrite actions, thinking and speaking eye.</p></div></li>
-        <li class="reveal"><span class="t-dot"></span><div><span class="tag">Planned</span><h3>6 · Settings 2.0</h3><p>New settings panel with live preview, saved between sessions, AI profiles.</p></div></li>
-        <li class="reveal"><span class="t-dot"></span><div><span class="tag">Planned</span><h3>7 · Ship web</h3><p>Installable, offline-ready web app.</p></div></li>
-        <li class="reveal"><span class="t-dot"></span><div><span class="tag">Planned</span><h3>8 · Native</h3><p>Windows overlay, then Android floating bubble.</p></div></li>
-        <li class="reveal is-later"><span class="t-dot"></span><div><span class="tag">Later</span><h3>Beyond</h3><p>More AI providers, offline in-browser model, AI that can act on drones, custom drones, browser extension.</p></div></li>
-      </ol>
+      <ol class="timeline" id="roadmap-list" aria-label="Roadmap phases"></ol>
+      <p class="note" id="roadmap-updated"></p>
+      <script type="application/json" id="roadmap-fallback">
+{"updated":"2026-11-03","summary":"Phases 0 to 3 are done: the engine, the feel and the pods. Real tools are next.","items":[
+{"id":"plan","title":"Plan","status":"done","text":"Full rewrite plan, decisions locked: web first, custom API, four drones, glass goo."},
+{"id":"0","title":"0 · Foundation","status":"done","text":"Clean project, folder layout, strict TypeScript, tests, design tokens."},
+{"id":"1","title":"1 · Engine","status":"done","text":"Rounded rail, fixed-step loop, rail-space springs, glass renderer, eye state machine."},
+{"id":"2","title":"2 · Feel & polish","status":"done","text":"Fling and snap points, feel presets, long-press menu, keyboard control, reduced motion."},
+{"id":"3","title":"3 · Pods","status":"done","text":"Drones ooze into glass panels that open toward the screen centre and morph into each other."},
+{"id":"4","title":"4 · Tools","status":"next","text":"Attach, Quick Notes, Clipboard Editor, Prompt Presets. Local storage, export and import."},
+{"id":"5","title":"5 · AI","status":"planned","text":"Custom API adapter with streaming, Ask panel, Run with AI, rewrite actions, thinking and speaking eye."},
+{"id":"6","title":"6 · Settings 2.0","status":"planned","text":"New settings panel with live preview, saved between sessions, AI profiles."},
+{"id":"7","title":"7 · Ship web","status":"planned","text":"Installable, offline-ready web app."},
+{"id":"8","title":"8 · Native","status":"planned","text":"Windows overlay, then Android floating bubble."},
+{"id":"later","title":"Beyond","status":"later","text":"More AI providers, an offline in-browser model, AI that can act on drones, custom drones, a browser extension."}
+]}
+      </script>
     </section>
 
     <!-- GET: locked until config.js says otherwise (see js/download.js) -->
@@ -270,6 +400,6 @@
     <span>Local-first. Your notes, files and keys stay on your device.</span>
   </footer>
 
-  <script type="module" src="js/main.js?v=a25ac2e4"></script>
+  <script type="module" src="js/main.js?v=63fb71e3"></script>
 </body>
 </html>

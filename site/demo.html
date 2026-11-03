@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>noUI live demo</title>
+  <meta name="robots" content="noindex" />
+  <meta name="color-scheme" content="dark" />
+  <meta name="theme-color" content="#09090b" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <!-- The stage that index.html embeds in its frames. The real engine lives in js/noui-demo.js (generated: npm run build:site-demo). -->
+  <style>
+    @font-face { font-family: "Geist"; src: url("fonts/Geist-Variable.woff2") format("woff2"); font-weight: 100 900; font-style: normal; font-display: swap; }
+    @font-face { font-family: "Geist Mono"; src: url("fonts/GeistMono-Variable.woff2") format("woff2"); font-weight: 100 900; font-style: normal; font-display: swap; }
+    html, body { margin: 0; height: 100%; background: #09090b; color-scheme: dark; }
+  </style>
+</head>
+<body>
+  <div id="stage"></div>
+  <noscript><p style="position:fixed;inset:0;display:grid;place-items:center;margin:0;color:#a1a1aa;font:14px system-ui">The live demo needs JavaScript.</p></noscript>
+  <script type="module" src="js/noui-demo.js?v=63fb71e3"></script>
+</body>
+</html>
